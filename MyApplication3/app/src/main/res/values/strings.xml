@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_track_u">trackU</string>
+    <string name="tab_text_1">TrackYou</string>
+    <string name="tab_text_2">MyList</string>
+</resources>
