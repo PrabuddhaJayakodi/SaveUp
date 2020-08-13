@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="Create your account"
+
         android:textColor="#972854"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -65,7 +66,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="User Name"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="#A59696"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,13 +92,15 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="464dp"
-        android:background="#DCABAB"
-        android:text="create"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="496dp"
+        android:background="@drawable/btn_design2"
+        android:backgroundTint="#AC7DB5"
+        android:text="Sign Up"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

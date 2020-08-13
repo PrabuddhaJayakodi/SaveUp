@@ -10,10 +10,11 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:layout_marginTop="428dp"
-        android:background="#D0F3C1"
+        android:background="@drawable/btn_design1"
+        android:backgroundTint="#EDFA73"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
