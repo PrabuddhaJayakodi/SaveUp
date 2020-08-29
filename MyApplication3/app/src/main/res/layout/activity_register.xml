@@ -94,7 +94,7 @@
         android:id="@+id/login"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="490dp"
         android:background="@drawable/btn_design2"
         android:backgroundTint="#AC7DB5"
         android:text="Sign Up"
