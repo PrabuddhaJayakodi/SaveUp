@@ -2,14 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.myproject.myapplication3">
 
-    <supports-screens
-        android:largeScreens="true"
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:xlargeScreens="true"
-        />
-
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2TntA06UrlbU5vfLOmfF_2QhRfEmU4OE"/>
+
+        <activity android:name=".MapDemo"></activity>
         <activity
             android:name=".trackU"
             android:label="@string/title_activity_track_u"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".loadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".login" />
-        <activity android:name=".register"/>
-
-
-        <activity android:name="MainActivity">
+        <activity android:name=".register" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +38,12 @@
             </intent-filter>
         </activity>
     </application>
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
