@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -26,6 +29,14 @@ public class MapDemo extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
+    private double lat=0;
+    private double lan=0;
+
+    public double latitude=0;
+    public double longitude=0;
+
+    private Button getLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +47,20 @@ public class MapDemo extends AppCompatActivity {
 
         //fused location
         client = LocationServices.getFusedLocationProviderClient(this);
+
+        //Button ID
+        getLocation = findViewById(R.id.btn_getlocation_id);
+
+        //GetLocation in map
+        getLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                latitude = lat;
+                longitude = lan;
+                startActivity(new Intent(getApplicationContext(),trackU.class));
+            }
+        });
 
         //check permission
         if (ActivityCompat.checkSelfPermission(MapDemo.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -71,6 +96,9 @@ public class MapDemo extends AppCompatActivity {
                         public void onMapReady(GoogleMap googleMap) {
                             //Lat lag
                             LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+
+                            lat = location.getLatitude();
+                            lan = location.getLongitude();
 
                             //marker
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Here is the Place");

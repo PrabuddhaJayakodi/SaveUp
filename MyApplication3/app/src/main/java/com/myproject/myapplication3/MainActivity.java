@@ -1,4 +1,4 @@
-/*package com.myproject.myapplication3;
+package com.myproject.myapplication3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,4 +33,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-*/
