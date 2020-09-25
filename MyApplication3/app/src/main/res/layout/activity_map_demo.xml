@@ -12,4 +12,15 @@
         android:id="@+id/google_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
+    <Button
+        android:id="@+id/btn_getlocation_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Location Here"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="25dp"/>
+
 </RelativeLayout>

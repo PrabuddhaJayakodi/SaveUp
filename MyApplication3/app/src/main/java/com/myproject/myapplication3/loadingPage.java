@@ -33,7 +33,7 @@ public class loadingPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),register.class));
+                startActivity(new Intent(getApplicationContext(),trackU.class));
             }
         });
     }
