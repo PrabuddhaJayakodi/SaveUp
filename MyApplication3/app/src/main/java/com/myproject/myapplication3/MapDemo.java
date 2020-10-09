@@ -32,8 +32,8 @@ public class MapDemo extends AppCompatActivity {
     private double lat=0;
     private double lan=0;
 
-    public double latitude=0;
-    public double longitude=0;
+    public static double latitude=0;
+    public static double longitude=0;
 
     private Button getLocation;
 

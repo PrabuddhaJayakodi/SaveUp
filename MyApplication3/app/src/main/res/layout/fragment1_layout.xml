@@ -16,39 +16,47 @@
         android:background="@drawable/mapimage" />
 
     <EditText
-        android:id="@+id/btn_map"
-        android:layout_width="395dp"
-        android:layout_height="48dp"
+        android:id="@+id/tv_vehicalNo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="15dp"
         android:background="@drawable/textfield_design1"
-
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="Vehicle number"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="395dp"
-        android:layout_height="137dp"
+        android:id="@+id/tv_caseDetails"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textAlignment="gravity"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="15dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@drawable/textfield_design1"
-
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="Details"
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_submitCase"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:clickable="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@drawable/btn_design2"
         android:backgroundTint="#CCB9ED"
-        android:text="Share" />
+        android:text="Submit Case" />
 
 </LinearLayout>
