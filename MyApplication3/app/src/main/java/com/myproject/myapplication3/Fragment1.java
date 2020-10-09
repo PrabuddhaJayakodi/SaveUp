@@ -72,7 +72,7 @@ public class Fragment1 extends Fragment {
                 {
                     Toast.makeText(v.getContext(),"Please Fill All Details",Toast.LENGTH_SHORT).show();
                 }else {
-                        Upload_data(user_id,v_number,c_details,latitude,latitude);
+                        Upload_data(user_id,v_number,c_details,latitude,longitiude);
                        // Toast.makeText(v.getContext(),"Got it",Toast.LENGTH_SHORT).show();
                 }
             }
