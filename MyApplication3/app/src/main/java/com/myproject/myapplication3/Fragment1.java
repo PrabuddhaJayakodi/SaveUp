@@ -10,9 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,11 +30,14 @@ public class Fragment1 extends Fragment {
 
     public View v;
     private Button button,submit_case;
+    //Text Boxes
     private EditText vehical_no,case_details;
 
+    //Firebase and Data References
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private DatabaseReference Dataref;
 
 
     @Nullable
@@ -42,6 +48,7 @@ public class Fragment1 extends Fragment {
         //ui declaretion
         UI_Declare();
 
+        //Go to Map
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +56,7 @@ public class Fragment1 extends Fragment {
             }
         });
 
+        //Submit case details
         submit_case.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,20 +64,22 @@ public class Fragment1 extends Fragment {
                 String user_id = firebaseAuth.getUid().toString().trim();
                 String v_number = vehical_no.getText().toString().trim();
                 String c_details = case_details.getText().toString().trim();
-                String latitude = String.valueOf(MapDemo.latitude);
-                String longitiude = String.valueOf(MapDemo.longitude);
+                Double latitude = MapDemo.latitude;
+                Double longitiude = MapDemo.longitude;
 
+                //Both Fields is empty....?
                 if (v_number.isEmpty() && c_details.isEmpty())
                 {
                     Toast.makeText(v.getContext(),"Please Fill All Details",Toast.LENGTH_SHORT).show();
                 }else {
-                        Upload_data(user_id,v_number,c_details);
+                        Upload_data(user_id,v_number,c_details,latitude,latitude);
                        // Toast.makeText(v.getContext(),"Got it",Toast.LENGTH_SHORT).show();
                 }
             }
+            //Data upload method
+            private void Upload_data(String user_id, String vehical_no, String case_data, final Double lat, final Double lan) {
 
-            private void Upload_data(String user_id,String vehical_no,String case_data) {
-
+                //case details upload part
                 final String key = databaseReference.push().getKey();
 
                 HashMap hashMap = new HashMap();
@@ -81,13 +91,32 @@ public class Fragment1 extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
 
+                        //location upload part
+                        GeoFire geoFire = new GeoFire(Dataref);
+
+                        try {
+                            geoFire.setLocation(key, new GeoLocation(lat, lan), new GeoFire.CompletionListener() {
+                                @Override
+                                public void onComplete(String key, DatabaseError error) {
+                                    if (error!=null)
+                                    {
+                                        Toast.makeText(v.getContext(),"Cant upload Location. Try again...!!",Toast.LENGTH_SHORT).show();
+                                    }
+                                    //Toast.makeText(v.getContext(),"Location Upload",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        //submited complete
                         Toast.makeText(v.getContext(),"Case was submited....!!",Toast.LENGTH_SHORT).show();
                         Clear_feild();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                         Toast.makeText(v.getContext(),"Something Wrong....!!",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -97,7 +126,7 @@ public class Fragment1 extends Fragment {
 
         return v;
     }
-
+    //variable declare
     private void UI_Declare() {
         button = v.findViewById(R.id.button2);
         vehical_no = v.findViewById(R.id.tv_vehicalNo);
@@ -108,8 +137,9 @@ public class Fragment1 extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         databaseReference = firebaseDatabase.getReference().child("Customer Complain");
+        Dataref = firebaseDatabase.getReference().child("Case Locations");
     }
-
+    //clean fields
     private void Clear_feild()
     {
         vehical_no.setText("");
