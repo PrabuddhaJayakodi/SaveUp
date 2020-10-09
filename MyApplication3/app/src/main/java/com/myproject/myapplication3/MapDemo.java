@@ -29,11 +29,11 @@ public class MapDemo extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
-    private double lat=0;
-    private double lan=0;
+    private double lat= 0;
+    private double lan= 0;
 
-    public static double latitude=0;
-    public static double longitude=0;
+    public static double latitude= 0;
+    public static double longitude= 0;
 
     private Button getLocation;
 
