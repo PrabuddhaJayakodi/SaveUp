@@ -48,7 +48,7 @@ public class Fragment1 extends Fragment {
         //ui declaretion
         UI_Declare();
 
-        //Go to Map
+        //Go to google Map
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
