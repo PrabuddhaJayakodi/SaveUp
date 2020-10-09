@@ -100,7 +100,7 @@ public class Fragment1 extends Fragment {
                                 public void onComplete(String key, DatabaseError error) {
                                     if (error!=null)
                                     {
-                                        Toast.makeText(v.getContext(),"Cant upload Location. Try again...!!",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(v.getContext(),"Can't upload Location. Try again...!!",Toast.LENGTH_SHORT).show();
                                     }
                                     //Toast.makeText(v.getContext(),"Location Upload",Toast.LENGTH_SHORT).show();
                                 }
@@ -111,13 +111,13 @@ public class Fragment1 extends Fragment {
                         }
 
                         //submited complete
-                        Toast.makeText(v.getContext(),"Case was submited....!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"Case is submited.",Toast.LENGTH_SHORT).show();
                         Clear_feild();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(v.getContext(),"Something Wrong....!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"Something Wrong...",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
