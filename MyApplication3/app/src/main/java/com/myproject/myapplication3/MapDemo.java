@@ -29,11 +29,11 @@ public class MapDemo extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
-    private double lat=0;
-    private double lan=0;
+    private double lat= 0;
+    private double lon= 0;
 
-    public static double latitude=0;
-    public static double longitude=0;
+    public static double latitude= 0;
+    public static double longitude= 0;
 
     private Button getLocation;
 
@@ -57,7 +57,7 @@ public class MapDemo extends AppCompatActivity {
             public void onClick(View v) {
 
                 latitude = lat;
-                longitude = lan;
+                longitude = lon;
                 startActivity(new Intent(getApplicationContext(),trackU.class));
             }
         });
@@ -98,7 +98,7 @@ public class MapDemo extends AppCompatActivity {
                             LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
 
                             lat = location.getLatitude();
-                            lan = location.getLongitude();
+                            lon = location.getLongitude();
 
                             //marker
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Here is the Place");

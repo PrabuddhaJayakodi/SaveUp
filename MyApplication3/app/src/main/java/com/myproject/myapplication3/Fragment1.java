@@ -52,7 +52,7 @@ public class Fragment1 extends Fragment {
         //ui declaretion
         UI_Declare();
 
-        //Go to Map
+        //Go to google Map
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +85,7 @@ public class Fragment1 extends Fragment {
                 //Both Fields is empty....?
                 if (v_number.isEmpty() && c_details.isEmpty())
                 {
-                    Toast.makeText(v.getContext(),"Please Fill All Details",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(),"Please Fill All Details.",Toast.LENGTH_SHORT).show();
                 }else {
                         Upload_data(user_id,v_number,c_details,latitude,longitiude,current_time,current_date);
                        // Toast.makeText(v.getContext(),"Got it",Toast.LENGTH_SHORT).show();
@@ -117,7 +117,7 @@ public class Fragment1 extends Fragment {
                                 public void onComplete(String key, DatabaseError error) {
                                     if (error!=null)
                                     {
-                                        Toast.makeText(v.getContext(),"Cant upload Location. Try again...!!",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(v.getContext(),"Can't upload Location. Try again...!!",Toast.LENGTH_SHORT).show();
                                     }
                                     //Toast.makeText(v.getContext(),"Location Upload",Toast.LENGTH_SHORT).show();
                                 }
@@ -128,13 +128,13 @@ public class Fragment1 extends Fragment {
                         }
 
                         //submited complete
-                        Toast.makeText(v.getContext(),"Case was submited....!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"Case is submited.",Toast.LENGTH_SHORT).show();
                         Clear_feild();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(v.getContext(),"Something Wrong....!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"Something Wrong...",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

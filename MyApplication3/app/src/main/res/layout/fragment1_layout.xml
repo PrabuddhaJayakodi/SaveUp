@@ -12,7 +12,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="269dp"
+        android:layout_height="213dp"
         android:background="@drawable/mapimage" />
 
     <EditText
@@ -33,20 +33,20 @@
     <EditText
         android:id="@+id/tv_caseDetails"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:textAlignment="gravity"
-        android:gravity="top"
-        android:paddingTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:paddingLeft="15dp"
+        android:layout_height="131dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/textfield_design1"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:gravity="top"
         android:hint="Details"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:textAlignment="gravity" />
 
     <Button
         android:id="@+id/btn_submitCase"
