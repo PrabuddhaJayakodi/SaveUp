@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import androidx.annotation.NonNull;
@@ -67,17 +71,28 @@ public class Fragment1 extends Fragment {
                 Double latitude = MapDemo.latitude;
                 Double longitiude = MapDemo.longitude;
 
+                //date and time
+                Calendar calendar = Calendar.getInstance();
+                //String current_date = DateFormat.getDateInstance().format(calendar.getTime());
+
+                SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("hh:mm:ss");
+                String current_time = simpleDateFormat1.format(calendar.getTime());
+
+                SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-mm-dd");
+                String current_date = simpleDateFormat2.format(calendar.getTime());
+
+
                 //Both Fields is empty....?
                 if (v_number.isEmpty() && c_details.isEmpty())
                 {
                     Toast.makeText(v.getContext(),"Please Fill All Details",Toast.LENGTH_SHORT).show();
                 }else {
-                        Upload_data(user_id,v_number,c_details,latitude,longitiude);
+                        Upload_data(user_id,v_number,c_details,latitude,longitiude,current_time,current_date);
                        // Toast.makeText(v.getContext(),"Got it",Toast.LENGTH_SHORT).show();
                 }
             }
             //Data upload method
-            private void Upload_data(String user_id, String vehical_no, String case_data, final Double lat, final Double lan) {
+            private void Upload_data(String user_id, String vehical_no, String case_data, final Double lat, final Double lan,String time,String date) {
 
                 //case details upload part
                 final String key = databaseReference.push().getKey();
@@ -86,6 +101,8 @@ public class Fragment1 extends Fragment {
                 hashMap.put("User_ID",user_id);
                 hashMap.put("Vehicle_Number",vehical_no);
                 hashMap.put("Case_Details",case_data);
+                hashMap.put("Case_upload_time",time);
+                hashMap.put("Case_upload_date",date);
 
                 databaseReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

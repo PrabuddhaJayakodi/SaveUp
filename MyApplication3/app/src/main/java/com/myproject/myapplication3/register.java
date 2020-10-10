@@ -14,9 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class register extends AppCompatActivity {
 
@@ -25,6 +31,9 @@ public class register extends AppCompatActivity {
     TextView mNavigateloginpage;
     FirebaseAuth fAuth;
     ProgressBar mprogressbar;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -41,10 +50,10 @@ public class register extends AppCompatActivity {
         mNavigateloginpage = findViewById(R.id.navigateRegister);
         mprogressbar = findViewById(R.id.progressBar);
         fAuth =FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         if(fAuth.getCurrentUser() !=null) {
             startActivity(new Intent(getApplicationContext(), trackU.class));
-
 
         }
 
@@ -82,7 +91,8 @@ public class register extends AppCompatActivity {
 
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
+                            Upload_user_data();
+                            //Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),login.class));
                         } else
                         {
@@ -104,6 +114,31 @@ public class register extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(getApplicationContext(),login.class));
+            }
+        });
+    }
+
+    private void Upload_user_data() {
+        String first_name = mFirstname.getText().toString().trim();
+        String last_name = mLastname.getText().toString().trim();
+        String user_email = mUsername.getText().toString().trim();
+
+        databaseReference = firebaseDatabase.getReference().child("User Profile Data").child(fAuth.getUid());
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("user_email",user_email);
+        hashMap.put("first_name",first_name);
+        hashMap.put("last_name",last_name);
+
+        databaseReference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(register.this, "User Created..!", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(register.this, "User Created Fail..!", Toast.LENGTH_SHORT).show();
             }
         });
     }
