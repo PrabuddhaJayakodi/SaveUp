@@ -23,10 +23,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class register extends AppCompatActivity {
 
-    EditText mFirstname,mLastname,mUsername,mPassword;
+    EditText mFirstname,mLastname,mUsername,mPassword,mcontact,mnic;
     Button mRegisteration;
     TextView mNavigateloginpage;
     FirebaseAuth fAuth;
@@ -46,6 +48,8 @@ public class register extends AppCompatActivity {
         mLastname = findViewById(R.id.lastname);
         mUsername = findViewById(R.id.username);
         mPassword = findViewById(R.id.password);
+        mcontact = findViewById(R.id.contact);
+        mnic = findViewById(R.id.nic_no);
         mRegisteration = findViewById(R.id.login);
         mNavigateloginpage = findViewById(R.id.navigateRegister);
         mprogressbar = findViewById(R.id.progressBar);
@@ -79,6 +83,17 @@ public class register extends AppCompatActivity {
                 if(password.length()<6)
                 {
                     mPassword.setError("password must be atleast 6 characteristic");
+                    return;
+                }
+
+                if (!is_ValidNic(mnic.getText().toString().trim()))
+                {
+                    mnic.setError("Please enter valid NIC");
+                    return;
+                }
+                if (!is_contact(mcontact.getText().toString().trim()))
+                {
+                    mcontact.setError("Please enter valid contact");
                     return;
                 }
 
@@ -122,6 +137,8 @@ public class register extends AppCompatActivity {
         String first_name = mFirstname.getText().toString().trim();
         String last_name = mLastname.getText().toString().trim();
         String user_email = mUsername.getText().toString().trim();
+        String contact = mcontact.getText().toString();
+        String nic = mnic.getText().toString();
 
         databaseReference = firebaseDatabase.getReference().child("User Profile Data").child(fAuth.getUid());
 
@@ -129,6 +146,8 @@ public class register extends AppCompatActivity {
         hashMap.put("user_email",user_email);
         hashMap.put("first_name",first_name);
         hashMap.put("last_name",last_name);
+        hashMap.put("contact_number",contact);
+        hashMap.put("nic_number",nic);
 
         databaseReference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -141,5 +160,36 @@ public class register extends AppCompatActivity {
                 Toast.makeText(register.this, "User Created Fail..!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+
+    public static boolean is_ValidNic(String nic) {
+
+        String stringToSearch = nic;
+
+        Pattern p = Pattern.compile("([0-9]{9}[a-z]{1})");
+        Matcher m = p.matcher(stringToSearch);
+
+
+        if (m.find() && nic.length()==10)
+            return true;
+        else
+            return false;
+    }
+
+
+    public static boolean is_contact(final String contact)
+    {
+        String StringTosearch = contact;
+
+        Pattern p = Pattern.compile("(^1300\\d{6}$)|(^0[1|3|7|6|8]{1}[0-9]{8}$)|(^13\\d{4}$)|(^04\\d{2,3}\\d{6}$)");
+        Matcher m = p.matcher(StringTosearch);
+
+
+        if (m.find())
+            return true;
+        else
+            return false;
     }
 }
