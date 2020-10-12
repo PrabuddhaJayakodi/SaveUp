@@ -6,4 +6,5 @@
     <string name="title_activity_track_u">trackU</string>
     <string name="tab_text_1">TrackYou</string>
     <string name="tab_text_2">MyList</string>
+    <string name="tab_text_3">Settings</string>
 </resources>

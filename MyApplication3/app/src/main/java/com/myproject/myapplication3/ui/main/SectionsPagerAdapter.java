@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.myproject.myapplication3.Fragment1;
 import com.myproject.myapplication3.Fragment2;
+import com.myproject.myapplication3.Fragment3;
 import com.myproject.myapplication3.R;
 
 /**
@@ -20,7 +21,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 
     private final Context mContext;
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3};
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -37,6 +38,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             case 1: fragment = new Fragment2(); break;
 
+            case 2: fragment = new Fragment3(); break;
+
         }
         return fragment;
     }
@@ -50,6 +53,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 }

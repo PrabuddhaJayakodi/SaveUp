@@ -30,7 +30,7 @@
         android:id="@+id/login"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="488dp"
         android:background="@drawable/btn_design2"
         android:backgroundTint="#0D350E"
         android:text="Sign Up"
@@ -138,10 +138,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.992" />
 
     <TextView
         android:id="@+id/navigateRegister"
@@ -151,10 +151,9 @@
         android:textColor="#4C1F53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintVertical_bias="0.91" />
 
     <TextView
         android:id="@+id/textView"
