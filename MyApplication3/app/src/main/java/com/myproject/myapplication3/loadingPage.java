@@ -32,7 +32,6 @@ public class loadingPage extends AppCompatActivity {
         mloadingregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(getApplicationContext(),register.class));
             }
         });

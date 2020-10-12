@@ -42,4 +42,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database:16.0.5'
     implementation 'com.firebase:geofire-java:3.0.0'
+
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+    implementation 'com.firebaseui:firebase-ui-database:6.2.0'
 }

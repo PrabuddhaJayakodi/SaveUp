@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loadingPage"></activity>
-
+        <activity android:name=".my_cases"></activity>
+        <activity android:name=".loadingPage" />
         <activity android:name=".MapDemo" />
-
         <activity
             android:name=".trackU"
             android:label="@string/title_activity_track_u"
@@ -26,8 +25,8 @@
         </activity>
         <activity android:name=".login" />
         <activity android:name=".register" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC2TntA06UrlbU5vfLOmfF_2QhRfEmU4OE" />
@@ -35,16 +34,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
         android:xlargeScreens="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
