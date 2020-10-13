@@ -1,22 +1,116 @@
 package com.myproject.myapplication3;
 
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Fragment3 extends Fragment {
 
+    public View fragment_v3;
+    //UI component
+    private Button profile,email,password,logout,contact;
+    //Firebase
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment3_layout,container,false);
+        fragment_v3 =  inflater.inflate(R.layout.fragment3_layout,container,false);
+
+        //UI Declare
+        UI_Declare();
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),profile.class));
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),change_email.class));
+            }
+        });
+
+        password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),change_password.class));
+            }
+        });
+
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),contact_us.class));
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Are you sure...??");
+                builder.setMessage("Please Confirm you want to logout....??");
+                builder.setPositiveButton("Logout Now", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        firebaseAuth.signOut();
+                        Toast.makeText(getContext(),"Logout Successfully",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getContext(),loadingPage.class));
+                        getActivity().finish();
+
+                    }
+                });
+
+                builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
+
+        return fragment_v3;
+    }
+
+    private void UI_Declare() {
+        profile = fragment_v3.findViewById(R.id.my_profile);
+        email = fragment_v3.findViewById(R.id.change_email);
+        password = fragment_v3.findViewById(R.id.change_password);
+        contact = fragment_v3.findViewById(R.id.contact_us);
+        logout = fragment_v3.findViewById(R.id.log_out);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
 
