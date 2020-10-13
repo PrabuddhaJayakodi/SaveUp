@@ -49,18 +49,18 @@
                 android:id="@+id/et_ce_new_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Email address"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="15dp"
-                android:textSize="22dp"/>
+                android:layout_marginRight="30dp"
+                android:hint="Email address"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/ce_btn_submit"
                 android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="35dp"
                 android:text="Submit"
                 android:textSize="18dp"/>
 

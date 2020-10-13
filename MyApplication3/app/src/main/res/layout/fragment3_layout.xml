@@ -20,11 +20,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Settings Dashboard"
-                android:textSize="30dp"
-                android:textColor="#000000"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="Settings Dashboard"
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -36,98 +36,98 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/my_profile"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:text="My Profile"
-                    android:background="@drawable/btn_design1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="38dp"
                     android:layout_gravity="center"
-                    android:textSize="15dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_design1"
+                    android:text="My Profile"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/change_email"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:text="Change Email"
-                    android:background="@drawable/btn_design1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="38dp"
                     android:layout_gravity="center"
-                    android:textSize="15dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_design1"
+                    android:text="Change Email"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/change_password"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:text="Change Password"
-                    android:background="@drawable/btn_design1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="38dp"
                     android:layout_gravity="center"
-                    android:textSize="15dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_design1"
+                    android:text="Change Password"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/contact_us"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:text="Contact Us"
-                    android:background="@drawable/btn_design1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="38dp"
                     android:layout_gravity="center"
-                    android:textSize="15dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_design1"
+                    android:text="Contact Us"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/log_out"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:text="Logout"
-                    android:background="@drawable/btn_design1"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="38dp"
                     android:layout_gravity="center"
-                    android:textSize="15dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_design1"
+                    android:text="Logout"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="80dp"
+                android:layout_weight="0"
                 android:orientation="vertical">
 
             </LinearLayout>

@@ -12,7 +12,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="213dp"
+        android:layout_height="201dp"
         android:background="@drawable/mapimage" />
 
     <EditText
@@ -53,7 +53,7 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btn_design2"
         android:backgroundTint="#CCB9ED"
         android:clickable="true"
