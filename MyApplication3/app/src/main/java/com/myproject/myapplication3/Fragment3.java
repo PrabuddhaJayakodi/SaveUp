@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -26,10 +28,11 @@ public class Fragment3 extends Fragment {
 
     public View fragment_v3;
     //UI component
-    private Button profile,email,password,logout,contact;
+    private Button profile,email,password,logout,contact,delete;
     //Firebase
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    private FirebaseUser firebaseUser;
 
     @Nullable
     @Override
@@ -98,8 +101,56 @@ public class Fragment3 extends Fragment {
             }
         });
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Are you sure...??");
+                builder.setMessage("Delete this account will result in completely removing your" +
+                        "account from the system and you wan't be able to access this app.");
+                builder.setPositiveButton("Delete Now", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        delete_user_data();
+
+                        firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                {
+                                    Toast.makeText(getContext(),"Profile Delete Successful..!!",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getContext(),loadingPage.class));
+                                    getActivity().finish();
+                                }else {
+                                    Toast.makeText(getContext(),"Profile Delete Failed..!!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+
+                builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
+
 
         return fragment_v3;
+    }
+
+    private void delete_user_data() {
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("User Profile Data").child(firebaseAuth.getUid());
+        databaseReference.removeValue();
     }
 
     private void UI_Declare() {
@@ -108,9 +159,11 @@ public class Fragment3 extends Fragment {
         password = fragment_v3.findViewById(R.id.change_password);
         contact = fragment_v3.findViewById(R.id.contact_us);
         logout = fragment_v3.findViewById(R.id.log_out);
+        delete = fragment_v3.findViewById(R.id.delete_account);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
 
